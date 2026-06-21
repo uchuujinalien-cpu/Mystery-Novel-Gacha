@@ -1,0 +1,745 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #ffffff;
+  color: #111111;
+  min-height: 100vh;
+}
+
+button,
+input {
+  font-family: inherit;
+}
+
+button {
+  touch-action: manipulation;
+}
+
+.container {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 40px 16px;
+}
+
+.site-header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  color: #777777;
+  font-size: 13px;
+}
+
+h1 {
+  margin: 0 0 10px;
+  font-size: 36px;
+  font-weight: 700;
+}
+
+.subtitle {
+  max-width: 640px;
+  margin: 0 auto;
+  color: #555555;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.guide-card,
+.mode-area,
+.gacha-type-area,
+.result-count-area,
+.genre-area,
+.exclude-area,
+.main-action,
+.selected-area,
+.results-area,
+.search-area,
+.detail-area,
+.mypage-area {
+  margin-bottom: 28px;
+}
+
+.guide-card,
+.exclude-area,
+.search-area,
+.selected-area,
+.detail-area,
+.mypage-area {
+  border: 1px solid #dddddd;
+  background-color: #ffffff;
+  padding: 18px;
+}
+
+.guide-card h2,
+.exclude-area h2,
+.results-area h2,
+.search-area h2,
+.detail-area h2,
+.mypage-area h2 {
+  margin: 0 0 10px;
+  font-size: 22px;
+}
+
+.guide-card p,
+.gacha-description,
+.result-message,
+.mode-description,
+.small-note,
+.detail-note {
+  color: #555555;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.guide-card p,
+.gacha-description,
+.result-message,
+.selected-area p,
+.small-note,
+.detail-note {
+  margin: 0;
+}
+
+.section-title {
+  margin: 0 0 10px;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.sub-title {
+  margin-top: 16px;
+}
+
+.mode-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.mode-area .mode-buttons {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.mode-option,
+.gacha-type-option {
+  display: block;
+  border: 1px solid #cccccc;
+  border-radius: 999px;
+  background-color: #ffffff;
+  padding: 14px 18px;
+  cursor: pointer;
+}
+
+.mode-option:hover,
+.mode-option.active,
+.gacha-type-option:hover,
+.gacha-type-option.active {
+  border-color: #111111;
+  background-color: #f3f3f3;
+}
+
+.mode-option input,
+.gacha-type-option input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.mode-title {
+  display: block;
+  margin-bottom: 4px;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.mode-description {
+  display: block;
+}
+
+.result-count-select {
+  width: min(220px, 100%);
+  border: 1px solid #cccccc;
+  border-radius: 999px;
+  background-color: #ffffff;
+  color: #111111;
+  padding: 10px 14px;
+  font-size: 15px;
+}
+
+.search-controls {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.search-controls input {
+  width: 100%;
+  border: 1px solid #cccccc;
+  border-radius: 999px;
+  padding: 10px 14px;
+  font-size: 15px;
+}
+
+.search-result-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.search-result-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  align-items: center;
+  border-top: 1px solid #eeeeee;
+  padding-top: 10px;
+}
+
+.search-result-main h3 {
+  margin: 0 0 4px;
+  font-size: 16px;
+}
+
+.search-result-main p {
+  margin: 0;
+  color: #555555;
+  font-size: 13px;
+}
+
+.search-result-actions,
+.data-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: flex-end;
+}
+
+.genre-buttons,
+.exclude-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.result-count-select {
+  width: min(220px, 100%);
+  border: 1px solid #cccccc;
+  border-radius: 999px;
+  background-color: #ffffff;
+  color: #111111;
+  padding: 10px 14px;
+  font-size: 15px;
+}
+
+.search-controls {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.search-controls input {
+  width: 100%;
+  border: 1px solid #cccccc;
+  border-radius: 999px;
+  padding: 10px 14px;
+  font-size: 15px;
+}
+
+.search-result-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.search-result-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  align-items: center;
+  border-top: 1px solid #eeeeee;
+  padding-top: 10px;
+}
+
+.search-result-main h3 {
+  margin: 0 0 4px;
+  font-size: 16px;
+}
+
+.search-result-main p {
+  margin: 0;
+  color: #555555;
+  font-size: 13px;
+}
+
+.search-result-actions,
+.data-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: flex-end;
+}
+
+.genre-buttons,
+.exclude-buttons {
+  max-height: 260px;
+  overflow-y: auto;
+  padding: 2px 0;
+}
+
+.genre-button,
+.exclude-tag-button {
+  border: 1px solid #cccccc;
+  border-radius: 999px;
+  background-color: #ffffff;
+  color: #111111;
+  padding: 8px 14px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.genre-button:hover,
+.exclude-tag-button:hover {
+  background-color: #f3f3f3;
+}
+
+.genre-button.active {
+  background-color: #111111;
+  color: #ffffff;
+  border-color: #111111;
+}
+
+.exclude-tag-button.active {
+  background-color: #cc0000;
+  color: #ffffff;
+  border-color: #cc0000;
+}
+
+.exclude-option {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.exclude-option input {
+  width: 18px;
+  height: 18px;
+  accent-color: #111111;
+}
+
+.main-action {
+  text-align: center;
+  padding: 24px 0;
+  border-top: 1px solid #eeeeee;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.selected-genre {
+  display: inline-block;
+  margin: 0 0 14px;
+  color: #555555;
+  font-size: 14px;
+}
+
+.gacha-button {
+  display: block;
+  width: min(360px, 100%);
+  margin: 0 auto 12px;
+  border: 2px solid #111111;
+  border-radius: 999px;
+  background-color: #111111;
+  color: #ffffff;
+  padding: 16px 24px;
+  font-size: 22px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.gacha-button:hover {
+  background-color: #ffffff;
+  color: #111111;
+}
+
+.gacha-button:active {
+  background-color: #cc0000;
+  color: #ffffff;
+  border-color: #cc0000;
+}
+
+.selected-area {
+  border-left: 6px solid #cc0000;
+}
+
+#selectedTitle {
+  margin-bottom: 6px;
+  font-weight: 700;
+}
+
+.hidden {
+  display: none;
+}
+
+.results-area h2,
+.result-message {
+  text-align: center;
+}
+
+.result-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.result-card {
+  display: grid;
+  grid-template-columns: 64px 1fr 170px;
+  gap: 12px;
+  align-items: center;
+  border: none;
+  background-color: transparent;
+  padding: 12px 0;
+}
+
+.result-card:hover {
+  background-color: #f7f7f7;
+}
+
+.result-card.selected {
+  background-color: #fff4f4;
+}
+
+.result-card.selected .result-main h3 {
+  color: #cc0000;
+}
+
+.result-number {
+  color: #555555;
+  font-size: 13px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.result-main h3 {
+  margin: 0 0 6px;
+  font-size: 19px;
+}
+
+.book-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  color: #555555;
+  font-size: 13px;
+}
+
+.book-description {
+  margin: 8px 0 10px;
+  color: #333333;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.tags,
+.detail-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tag {
+  border: 1px solid #dddddd;
+  border-radius: 999px;
+  background-color: #f3f3f3;
+  color: #333333;
+  padding: 4px 10px;
+  font-size: 12px;
+}
+
+.book-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.book-actions button,
+.search-result-actions button,
+.saved-book-actions button,
+.small-button,
+.danger-button,
+.detail-action-button {
+  border: 1px solid #111111;
+  border-radius: 999px;
+  background-color: #ffffff;
+  color: #111111;
+  padding: 8px 10px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.book-actions button:hover,
+.search-result-actions button:hover,
+.saved-book-actions button:hover,
+.small-button:hover,
+.detail-action-button:hover {
+  background-color: #111111;
+  color: #ffffff;
+}
+
+.book-actions .read-book-button,
+.danger-button {
+  border-color: #cc0000;
+  color: #cc0000;
+}
+
+.book-actions .read-book-button:hover,
+.danger-button:hover {
+  background-color: #cc0000;
+  color: #ffffff;
+}
+
+.result-card.already-read .result-main h3::after {
+  content: " 既読";
+  color: #cc0000;
+  font-size: 12px;
+}
+
+.result-card.already-want .result-main h3::after {
+  content: " 読みたい";
+  color: #555555;
+  font-size: 12px;
+}
+
+.result-card.already-read.already-want .result-main h3::after {
+  content: " 既読";
+  color: #cc0000;
+  font-size: 12px;
+}
+
+.muted-tag {
+  color: #777777;
+  background-color: #ffffff;
+}
+
+.internal-tag-details summary {
+  cursor: pointer;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.data-management-area {
+  border-top: 1px solid #eeeeee;
+  padding-top: 14px;
+  margin: 18px 0;
+}
+
+.data-management-area h3 {
+  margin: 0 0 8px;
+  font-size: 17px;
+}
+
+.detail-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.detail-title {
+  margin: 0 0 8px;
+  font-size: 24px;
+}
+
+.detail-block {
+  border-top: 1px solid #eeeeee;
+  padding-top: 12px;
+  margin-top: 12px;
+}
+
+.detail-block h3 {
+  margin: 0 0 8px;
+  font-size: 16px;
+}
+
+.review-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.review-links a {
+  display: inline-block;
+  border: 1px solid #111111;
+  border-radius: 999px;
+  color: #111111;
+  text-decoration: none;
+  padding: 8px 12px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.review-links a:hover {
+  background-color: #111111;
+  color: #ffffff;
+}
+
+.detail-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.mypage-summary {
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.mypage-summary > div {
+  border: 1px solid #dddddd;
+  padding: 14px;
+}
+
+.summary-label {
+  display: block;
+  color: #555555;
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+
+.mypage-summary strong {
+  font-size: 22px;
+}
+
+#favoriteLabels {
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.mypage-lists {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.book-list-box h3 {
+  margin: 0 0 8px;
+  font-size: 17px;
+}
+
+.saved-book-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.empty-list {
+  color: #777777;
+  font-size: 14px;
+}
+
+.saved-book-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  align-items: center;
+  border-top: 1px solid #eeeeee;
+  padding-top: 8px;
+}
+
+.saved-book-info strong,
+.saved-book-info span {
+  display: block;
+}
+
+.saved-book-info strong {
+  font-size: 15px;
+  margin-bottom: 3px;
+}
+
+.saved-book-info span {
+  color: #555555;
+  font-size: 13px;
+}
+
+.saved-book-actions {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+@media (max-width: 760px) {
+  .container {
+    padding: 28px 12px;
+  }
+
+  h1 {
+    font-size: 30px;
+  }
+
+  .mode-buttons,
+  .mode-area .mode-buttons,
+  .search-controls,
+  .mypage-summary,
+  .mypage-lists,
+  .saved-book-item,
+  .search-result-item {
+    grid-template-columns: 1fr;
+  }
+
+  .gacha-button {
+    font-size: 20px;
+    padding: 14px 20px;
+  }
+
+  .result-card,
+  .result-card.spoiler-safe {
+    grid-template-columns: 1fr;
+  }
+
+  .result-number {
+    text-align: left;
+  }
+
+  .book-actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .book-actions button {
+    flex: 1;
+  }
+
+  .saved-book-actions,
+  .search-result-actions,
+  .data-buttons {
+    justify-content: flex-start;
+  }
+
+  .search-result-actions button,
+  .data-buttons button {
+    flex: 1;
+  }
+
+  .genre-buttons,
+  .exclude-buttons {
+    max-height: 300px;
+  }
+}

@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="google-site-verification" content="iyUNZtNFs--ifdnd1PAqxWLZCdX3EZSWYYvyJ9dG72k" />
-  <title>ミステリー小説ガチャ</title>
+  <title>ミステリー小説ガチャ｜ネタバレなしで次に読む本を探す</title>
+  <meta name="description" content="ネタバレを避けながら、ジャンル・タグ・知的要素で次に読むミステリー小説を探せるガチャサイトです。">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -18,15 +19,14 @@
     </header>
 
     <section class="guide-card">
-      <h2>ネタバレを避けて本を選ぶ</h2>
+      <h2>このサイトの使い方</h2>
       <p>
-        大どんでん返しや叙述トリックのある小説は、仕掛けの存在を知っているだけで面白さが半減することがあります。
-        このサイトでは、読みたいジャンル・タグを複数選び、条件に合う本をランダムに混ぜて表示できます。
-        ネタバレ回避モードを使えば、結果には作品タイトル・作者・出版社のみが表示されるため、
-        タグやおすすめ理由を見ずに次の一冊を選べます。
+        ネタバレを避けながら、ジャンル・タグ・読後評価から次に読むミステリー小説を探すガチャです。
+        ネタバレ回避モードでは、タイトル・作者・出版社だけを表示します。
       </p>
       <p>
-        一部のタグは、ネタバレを避けるために内部タグとして扱います。検索・おすすめ・除外には使えますが、通常表示では見せすぎないようにしています。
+        自分専用おすすめは、既読・読みたい本に加えて読後評価を学習します。
+        「良かった理由」は似た要素を増やし、「微妙だった方向性」は苦手なジャンルや読み味だけを減らします。
       </p>
     </section>
 
@@ -63,9 +63,33 @@
         </label>
 
         <label class="gacha-type-option">
+          <input type="radio" name="gachaType" value="masterpiece">
+          <span class="mode-title">名作優先ガチャ</span>
+          <span class="mode-description">S/A中心。完成度の高い本を出やすくする</span>
+        </label>
+
+        <label class="gacha-type-option">
+          <input type="radio" name="gachaType" value="popular">
+          <span class="mode-title">最近人気上昇ガチャ</span>
+          <span class="mode-description">近年人気・話題性・完成度を重視して引く</span>
+        </label>
+
+        <label class="gacha-type-option">
+          <input type="radio" name="gachaType" value="logic">
+          <span class="mode-title">論理・頭脳戦ガチャ</span>
+          <span class="mode-description">天才・論理・冷徹・盤面支配系を出やすくする</span>
+        </label>
+
+        <label class="gacha-type-option">
           <input type="radio" name="gachaType" value="recommend">
           <span class="mode-title">自分専用おすすめ</span>
           <span class="mode-description">既読・読みたい本から好みを推定して引く</span>
+        </label>
+
+        <label class="gacha-type-option">
+          <input type="radio" name="gachaType" value="random">
+          <span class="mode-title">完全ランダム</span>
+          <span class="mode-description">スコア補正なしでランダムに引く</span>
         </label>
       </div>
     </section>
@@ -82,16 +106,22 @@
       <p class="small-note">候補数より多い冊数を選んだ場合は、出せる分だけ表示します。</p>
     </section>
 
-    <section class="genre-area">
-      <p class="section-title">読みたいジャンル・タグを選ぶ（複数選択可）</p>
-      <div id="filterButtons" class="genre-buttons">
+    <section class="genre-area collapsible-card">
+      <details>
+        <summary>読みたいジャンル・タグを選ぶ</summary>
+        <div class="collapsible-content">
+          <div id="filterButtons" class="genre-buttons">
         <!-- 読みたいジャンル・タグは script.js が登録本データから自動で作ります -->
       </div>
-      <p class="small-note">登録本に入っているジャンル・タグから自動で表示されます。</p>
+          <p class="small-note">ネタバレ危険タグはここには表示しません。内部タグはガチャ計算・検索・自分専用おすすめに使われます。</p>
+        </div>
+      </details>
     </section>
 
-    <section class="exclude-area">
-      <h2>ガチャから除外する条件</h2>
+    <section class="exclude-area collapsible-card">
+      <details>
+        <summary>除外条件を設定する</summary>
+        <div class="collapsible-content">
       <label class="exclude-option">
         <input type="checkbox" id="excludeReadBooks" checked>
         <span>既読本をガチャ結果から除外する</span>
@@ -106,6 +136,9 @@
       <p class="small-note">
         既読本・読みたい本は、このブラウザ内に保存されます。ログインなしの試作版です。
       </p>
+    
+        </div>
+      </details>
     </section>
 
     <section class="main-action">
@@ -116,8 +149,10 @@
       </p>
     </section>
 
-    <section class="search-area">
-      <h2>本を検索する</h2>
+    <section class="search-area collapsible-card">
+      <details>
+        <summary>本を検索する</summary>
+        <div class="collapsible-content">
       <div class="search-controls">
         <input type="search" id="bookSearchInput" placeholder="タイトル・作者・出版社・タグで検索">
         <button id="bookSearchButton" class="small-button">検索</button>
@@ -125,6 +160,9 @@
       </div>
       <p id="searchMessage" class="small-note">タイトル・作者・出版社で検索できます。</p>
       <div id="searchResultList" class="search-result-list"></div>
+    
+        </div>
+      </details>
     </section>
 
     <section id="selectedArea" class="selected-area hidden">
@@ -149,7 +187,7 @@
     </section>
 
     <section class="mypage-area">
-      <h2>マイページ</h2>
+      <h2>マイページ・学習状況</h2>
       <div class="mypage-summary">
         <div>
           <span class="summary-label">読みたい本</span>
@@ -160,26 +198,43 @@
           <strong id="readCount">0冊</strong>
         </div>
         <div>
+          <span class="summary-label">読後評価済み</span>
+          <strong id="ratedCount">0冊</strong>
+        </div>
+        <div>
+          <span class="summary-label">学習信頼度</span>
+          <strong id="learningConfidence">0%</strong>
+        </div>
+        <div>
           <span class="summary-label">推定される好み</span>
           <strong id="favoriteLabels">まだ不明</strong>
         </div>
       </div>
 
-      <div class="mypage-lists">
-        <section class="book-list-box">
-          <h3>読みたい本</h3>
-          <div id="wantList" class="saved-book-list empty-list">まだありません。</div>
+      <section class="preference-detail-area">
+        <h3>学習された好み</h3>
+        <div id="preferenceDetail" class="preference-detail empty-list">読後評価を保存すると、ここに詳しい傾向が表示されます。</div>
+      </section>
+
+      <div class="mypage-lists compact-saved-lists">
+        <section class="book-list-box saved-list-box">
+          <details>
+            <summary>読みたい本一覧を開く</summary>
+            <div id="wantList" class="saved-book-list empty-list">まだありません。</div>
+          </details>
         </section>
 
-        <section class="book-list-box">
-          <h3>既読本</h3>
-          <div id="readList" class="saved-book-list empty-list">まだありません。</div>
+        <section class="book-list-box saved-list-box">
+          <details>
+            <summary>既読本一覧を開く</summary>
+            <div id="readList" class="saved-book-list empty-list">まだありません。</div>
+          </details>
         </section>
       </div>
 
       <section class="data-management-area">
         <h3>データのバックアップ</h3>
-        <p class="small-note">読みたい本・既読本をJSONファイルとして書き出し、別のブラウザに読み込めます。</p>
+        <p class="small-note">読みたい本・既読本・読後評価・最近表示された本の履歴をJSONファイルとして書き出し、別のブラウザに読み込めます。</p>
         <div class="data-buttons">
           <button id="exportDataButton" class="small-button">データを書き出す</button>
           <button id="importDataButton" class="small-button">データを読み込む</button>

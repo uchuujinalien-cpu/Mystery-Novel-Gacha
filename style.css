@@ -605,7 +605,7 @@ h1 {
 
 .mypage-summary {
   display: grid;
-  grid-template-columns: 1fr 1fr 2fr;
+  grid-template-columns: repeat(5, 1fr);
   gap: 10px;
   margin-bottom: 18px;
 }
@@ -685,6 +685,106 @@ h1 {
   justify-content: flex-end;
 }
 
+
+.rank-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 6px 0 4px;
+  color: #555555;
+  font-size: 13px;
+}
+
+.rank-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  height: 24px;
+  border: 1px solid #111111;
+  border-radius: 999px;
+  padding: 0 9px;
+  font-weight: 700;
+  font-size: 13px;
+  background-color: #ffffff;
+  color: #111111;
+}
+
+.rank-S {
+  background-color: #111111;
+  color: #ffffff;
+}
+
+.rank-A {
+  border-color: #cc0000;
+  color: #cc0000;
+}
+
+.rank-B {
+  border-color: #777777;
+  color: #333333;
+}
+
+.rank-C {
+  border-color: #999999;
+  color: #555555;
+}
+
+.rank-D {
+  border-color: #bbbbbb;
+  color: #666666;
+}
+
+.rank-E {
+  border-color: #dddddd;
+  color: #777777;
+  background-color: #f7f7f7;
+}
+
+.rank-F {
+  border-color: #eeeeee;
+  color: #999999;
+  background-color: #fafafa;
+}
+
+.score-overview {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.score-note,
+.score-basis {
+  color: #555555;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.score-grid {
+  display: grid;
+  gap: 8px;
+}
+
+.score-row {
+  display: grid;
+  grid-template-columns: 120px 1fr 42px;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+}
+
+.score-row meter {
+  width: 100%;
+  height: 12px;
+}
+
+.score-basis {
+  margin: 10px 0 0;
+}
+
 @media (max-width: 760px) {
   .container {
     padding: 28px 12px;
@@ -742,4 +842,568 @@ h1 {
   .exclude-buttons {
     max-height: 300px;
   }
+
+  .score-row {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+}
+
+
+/* Tag category UI */
+.genre-buttons,
+.exclude-buttons {
+  display: block;
+  max-height: none;
+  overflow-y: visible;
+}
+
+.tag-category-group {
+  border: 1px solid #eeeeee;
+  border-radius: 18px;
+  padding: 12px;
+  margin-bottom: 10px;
+  background-color: #ffffff;
+}
+
+.tag-category-all {
+  border: none;
+  padding: 0;
+  margin-bottom: 12px;
+}
+
+.tag-category-heading {
+  margin-bottom: 8px;
+}
+
+.tag-category-heading h3 {
+  margin: 0 0 3px;
+  font-size: 15px;
+}
+
+.tag-category-heading p {
+  margin: 0;
+  color: #666666;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.tag-category-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag-category-intellect {
+  border-color: #111111;
+}
+
+.tag-category-value {
+  background-color: #fafafa;
+}
+
+.rank-F {
+  border-color: #999999;
+  color: #666666;
+}
+
+.internal-tag-details details {
+  border: 1px dashed #cccccc;
+  border-radius: 14px;
+  padding: 10px 12px;
+}
+
+.internal-tag-details summary {
+  cursor: pointer;
+  font-weight: 700;
+}
+
+@media (max-width: 760px) {
+  .tag-category-group {
+    padding: 10px;
+  }
+}
+
+
+/* Detailed reading rating UI */
+.recommendation-reason {
+  margin: 8px 0 0;
+  color: #333333;
+  font-size: 13px;
+  line-height: 1.6;
+  border-left: 4px solid #111111;
+  padding-left: 10px;
+}
+
+.rating-block {
+  background-color: #fafafa;
+  border-radius: 18px;
+  padding: 14px;
+}
+
+.rating-empty-block {
+  background-color: #ffffff;
+}
+
+.rating-options {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  margin: 12px 0 16px;
+}
+
+.rating-option {
+  display: block;
+  border: 1px solid #cccccc;
+  border-radius: 16px;
+  background-color: #ffffff;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.rating-option:hover,
+.rating-option:has(input:checked) {
+  border-color: #111111;
+  background-color: #f0f0f0;
+}
+
+.rating-option input {
+  margin-bottom: 6px;
+}
+
+.rating-label {
+  display: block;
+  font-weight: 700;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.rating-description {
+  display: block;
+  color: #555555;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.rating-reason-section {
+  border-top: 1px solid #e5e5e5;
+  padding-top: 14px;
+  margin-top: 14px;
+}
+
+.rating-reason-section h4 {
+  margin: 0 0 4px;
+  font-size: 16px;
+}
+
+.rating-reason-categories {
+  display: grid;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.rating-reason-category {
+  border: 1px solid #dddddd;
+  border-radius: 14px;
+  background-color: #ffffff;
+  padding: 9px 10px;
+}
+
+.rating-reason-category summary {
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.rating-reason-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 9px;
+}
+
+.rating-reason-option {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid #dddddd;
+  border-radius: 999px;
+  background-color: #ffffff;
+  padding: 7px 10px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.rating-reason-option:hover,
+.rating-reason-option:has(input:checked) {
+  border-color: #111111;
+  background-color: #f3f3f3;
+}
+
+.rating-reason-option input {
+  accent-color: #111111;
+}
+
+.rating-memo-label {
+  display: block;
+  margin-top: 14px;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.rating-memo {
+  width: 100%;
+  margin-top: 6px;
+  border: 1px solid #cccccc;
+  border-radius: 14px;
+  padding: 10px 12px;
+  font-size: 14px;
+  line-height: 1.6;
+  resize: vertical;
+}
+
+.rating-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.saved-rating-summary {
+  color: #333333 !important;
+  font-weight: 700;
+}
+
+.preference-detail-area {
+  border: 1px solid #eeeeee;
+  border-radius: 18px;
+  padding: 14px;
+  margin-bottom: 18px;
+  background-color: #fafafa;
+}
+
+.preference-detail-area h3 {
+  margin: 0 0 8px;
+  font-size: 17px;
+}
+
+.preference-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.preference-detail-grid h3 {
+  margin: 0 0 6px;
+  font-size: 14px;
+}
+
+.preference-detail-grid p {
+  margin: 0;
+  color: #333333;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.profile-pill {
+  display: inline-block;
+  border: 1px solid #111111;
+  border-radius: 999px;
+  padding: 4px 9px;
+  margin: 0 5px 5px 0;
+  font-size: 12px;
+  font-weight: 700;
+  background-color: #ffffff;
+  color: #111111;
+}
+
+.negative-pill {
+  border-color: #cc0000;
+  color: #cc0000;
+}
+
+@media (max-width: 760px) {
+  .rating-options,
+  .preference-detail-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+#favoriteLabels .profile-pill { margin-bottom: 3px; }
+
+
+/* Compact layout and collapsible areas */
+.container {
+  max-width: 980px;
+  padding-top: 28px;
+  padding-bottom: 28px;
+}
+
+.site-header {
+  margin-bottom: 18px;
+}
+
+.guide-card,
+.mode-area,
+.gacha-type-area,
+.result-count-area,
+.genre-area,
+.exclude-area,
+.main-action,
+.selected-area,
+.results-area,
+.search-area,
+.detail-area,
+.mypage-area {
+  margin-bottom: 16px;
+}
+
+.guide-card,
+.exclude-area,
+.search-area,
+.selected-area,
+.detail-area,
+.mypage-area,
+.collapsible-card {
+  border-radius: 18px;
+}
+
+.collapsible-card {
+  border: 1px solid #dddddd;
+  background-color: #ffffff;
+  padding: 0;
+}
+
+.collapsible-card > details > summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 14px 18px;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.collapsible-card > details > summary::-webkit-details-marker {
+  display: none;
+}
+
+.collapsible-card > details > summary::after {
+  content: "開く";
+  float: right;
+  color: #555555;
+  font-size: 12px;
+  font-weight: 700;
+  border: 1px solid #dddddd;
+  border-radius: 999px;
+  padding: 3px 8px;
+}
+
+.collapsible-card > details[open] > summary::after {
+  content: "閉じる";
+}
+
+.collapsible-content {
+  border-top: 1px solid #eeeeee;
+  padding: 14px 18px 18px;
+}
+
+.mode-buttons {
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.mode-area .mode-buttons {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.mode-option,
+.gacha-type-option {
+  border-radius: 18px;
+  padding: 10px 12px;
+}
+
+.mode-title {
+  font-size: 14px;
+}
+
+.mode-description {
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.result-count-area {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+}
+
+.result-count-area .section-title,
+.result-count-area .small-note {
+  margin-bottom: 0;
+}
+
+.main-action {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background-color: #ffffff;
+  padding: 14px 0;
+}
+
+.gacha-button {
+  width: min(340px, 100%);
+  padding: 14px 22px;
+  font-size: 21px;
+}
+
+.gacha-description {
+  font-size: 13px;
+}
+
+.genre-buttons,
+.exclude-buttons {
+  max-height: 360px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.result-card {
+  grid-template-columns: 54px 1fr 150px;
+  padding: 10px 0;
+}
+
+.book-description {
+  margin: 6px 0 8px;
+}
+
+.tag-category-group {
+  padding: 10px;
+  margin-bottom: 8px;
+}
+
+.mypage-summary {
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.mypage-summary > div {
+  padding: 10px;
+}
+
+.mypage-summary strong {
+  font-size: 18px;
+}
+
+@media (max-width: 760px) {
+  .mode-buttons,
+  .mode-area .mode-buttons {
+    grid-template-columns: 1fr;
+  }
+
+  .main-action {
+    position: static;
+  }
+}
+
+
+/* Defect fix: always-visible short guide, compact rating, compact saved lists */
+.guide-card {
+  border-radius: 18px;
+  padding: 16px 18px;
+}
+
+.guide-card h2 {
+  margin: 0 0 8px;
+  font-size: 18px;
+}
+
+.guide-card p + p {
+  margin-top: 8px;
+}
+
+.rating-collapsible {
+  padding: 0;
+  overflow: hidden;
+}
+
+.rating-collapsible > summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 14px;
+  font-weight: 700;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+}
+
+.rating-collapsible > summary::-webkit-details-marker {
+  display: none;
+}
+
+.rating-collapsible > summary::after {
+  content: "開く";
+  color: #555555;
+  font-size: 12px;
+  border: 1px solid #dddddd;
+  border-radius: 999px;
+  padding: 3px 8px;
+}
+
+.rating-collapsible[open] > summary::after {
+  content: "閉じる";
+}
+
+.rating-collapsible > summary span {
+  color: #555555;
+  font-size: 13px;
+  font-weight: 700;
+  margin-left: auto;
+}
+
+.rating-form-content {
+  border-top: 1px solid #eeeeee;
+  padding: 0 14px 14px;
+}
+
+.compact-saved-lists {
+  grid-template-columns: 1fr;
+}
+
+.saved-list-box {
+  border: 1px solid #eeeeee;
+  border-radius: 16px;
+  background-color: #ffffff;
+}
+
+.saved-list-box > details > summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 12px 14px;
+  font-weight: 700;
+}
+
+.saved-list-box > details > summary::-webkit-details-marker {
+  display: none;
+}
+
+.saved-list-box > details > summary::after {
+  content: "開く";
+  float: right;
+  color: #555555;
+  font-size: 12px;
+  border: 1px solid #dddddd;
+  border-radius: 999px;
+  padding: 3px 8px;
+}
+
+.saved-list-box > details[open] > summary::after {
+  content: "閉じる";
+}
+
+.saved-list-box .saved-book-list {
+  border-top: 1px solid #eeeeee;
+  padding: 10px 14px 14px;
+  max-height: 360px;
+  overflow-y: auto;
 }

@@ -1407,3 +1407,498 @@ h1 {
   max-height: 360px;
   overflow-y: auto;
 }
+
+/* Final polish: clearer hierarchy, spoiler-mode visibility, and outline gacha button */
+.compact-guide {
+  border: 1px solid #111111;
+  background-color: #ffffff;
+}
+
+.usage-guide-card {
+  border-color: #111111;
+  background-color: #ffffff;
+}
+
+.usage-guide-card > details > summary {
+  font-size: 17px;
+}
+
+.usage-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.usage-step {
+  border: 1px solid #eeeeee;
+  border-radius: 16px;
+  background-color: #fafafa;
+  padding: 12px;
+}
+
+.usage-step strong,
+.usage-step span {
+  display: block;
+}
+
+.usage-step strong {
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+
+.usage-step span {
+  color: #555555;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.primary-panel {
+  border: 1px solid #dddddd;
+  border-radius: 24px;
+  background-color: #ffffff;
+  padding: 18px;
+  margin-bottom: 16px;
+}
+
+.primary-panel-header {
+  margin-bottom: 12px;
+}
+
+.primary-panel-header h2 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.primary-control-section {
+  margin-bottom: 16px;
+}
+
+.primary-control-section:last-child {
+  margin-bottom: 0;
+}
+
+.settings-hub {
+  border-color: #111111;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.04);
+}
+
+.settings-hub > details > summary {
+  font-size: 17px;
+}
+
+.settings-hub-content {
+  display: grid;
+  gap: 14px;
+}
+
+.spoiler-mode-area {
+  border: 1px solid #111111;
+  border-left: 6px solid #111111;
+  border-radius: 18px;
+  background-color: #fafafa;
+  padding: 14px;
+  margin-bottom: 0;
+}
+
+.mode-caution {
+  margin: 0 0 10px;
+  color: #333333;
+}
+
+.nested-card {
+  margin-bottom: 0;
+}
+
+.main-action {
+  position: static;
+  border: 1px solid #dddddd;
+  border-radius: 24px;
+  background-color: #ffffff;
+  padding: 18px;
+}
+
+.gacha-button {
+  border: 2px solid #111111;
+  background-color: #ffffff;
+  color: #111111;
+  box-shadow: none;
+}
+
+.gacha-button:hover {
+  background-color: #f3f3f3;
+  color: #111111;
+}
+
+.gacha-button:active {
+  background-color: #e9e9e9;
+  color: #111111;
+  border-color: #111111;
+}
+
+.results-area {
+  border: 2px solid #111111;
+  border-radius: 24px;
+  background-color: #fafafa;
+  padding: 22px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06);
+}
+
+.results-heading {
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.results-heading h2 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.result-list {
+  gap: 12px;
+}
+
+.result-card {
+  border: 1px solid #e5e5e5;
+  border-radius: 18px;
+  background-color: #ffffff;
+  padding: 14px;
+}
+
+.result-card:hover {
+  background-color: #ffffff;
+  border-color: #111111;
+}
+
+.result-card.selected {
+  background-color: #fffafa;
+  border-color: #cc0000;
+}
+
+.compact-mypage {
+  padding: 0;
+}
+
+@media (max-width: 760px) {
+  .usage-steps {
+    grid-template-columns: 1fr;
+  }
+
+  .gacha-type-area .mode-buttons,
+  .preset-buttons,
+  .mode-area .mode-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .mode-description {
+    font-size: 11px;
+  }
+
+  .main-action,
+  .results-area,
+  .primary-panel {
+    border-radius: 20px;
+  }
+
+  .result-card,
+  .result-card.spoiler-safe {
+    grid-template-columns: 1fr;
+  }
+
+  .book-actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .book-actions button {
+    width: 100%;
+  }
+
+  .search-controls {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* Final adjustment: button fix support, softer borders, and folded-first UI */
+.compact-guide,
+.usage-guide-card,
+.settings-hub,
+.spoiler-mode-area,
+.primary-panel,
+.main-action,
+.search-area,
+.detail-area,
+.mypage-area,
+.collapsible-card,
+.nested-card,
+.preference-detail-area,
+.saved-list-box,
+.tag-category-group,
+.usage-step {
+  border-color: #dddddd !important;
+  box-shadow: none;
+}
+
+.spoiler-mode-area {
+  border-left: 1px solid #dddddd !important;
+  background-color: #ffffff;
+}
+
+.mode-option.active,
+.gacha-type-option.active,
+.mode-option:hover,
+.gacha-type-option:hover,
+.rating-option:has(input:checked),
+.rating-reason-option:has(input:checked),
+.result-card:hover {
+  border-color: #cccccc !important;
+}
+
+.tag-category-intellect,
+.rank-badge,
+.profile-pill,
+.review-links a,
+.book-actions button,
+.search-result-actions button,
+.saved-book-actions button,
+.small-button,
+.detail-action-button {
+  border-color: #cccccc !important;
+}
+
+.gacha-button {
+  border: 2px solid #111111 !important;
+  background-color: #ffffff !important;
+  color: #111111 !important;
+}
+
+.gacha-button:hover {
+  background-color: #f3f3f3 !important;
+  color: #111111 !important;
+}
+
+.gacha-button:active {
+  background-color: #e9e9e9 !important;
+  color: #111111 !important;
+  border-color: #111111 !important;
+}
+
+.results-area {
+  border: 2px solid #111111 !important;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06);
+}
+
+.usage-steps {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.usage-step strong {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.usage-step span {
+  font-size: 13px;
+  line-height: 1.75;
+}
+
+.collapsible-card > details > summary,
+.saved-list-box > details > summary,
+.rating-collapsible > summary {
+  cursor: pointer;
+}
+
+@media (max-width: 760px) {
+  .usage-steps {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Keep every non-primary outline light. Only the gacha button and result frame use a black outline. */
+.genre-button.active,
+.genre-button:hover,
+.exclude-tag-button:hover,
+.recommendation-reason,
+.rating-option:hover,
+.rating-reason-option:hover,
+.rating-option:has(input:checked),
+.rating-reason-option:has(input:checked),
+.result-card:hover,
+.result-card.selected {
+  border-color: #dddddd !important;
+}
+
+.recommendation-reason {
+  border-left-color: #dddddd !important;
+}
+
+/* Final requested polish: display mode in primary panel and unified preset buttons */
+.compact-guide,
+.usage-guide-card,
+.primary-panel,
+.settings-hub,
+.spoiler-mode-area,
+.main-action,
+.search-area,
+.detail-area,
+.mypage-area,
+.nested-card,
+.preset-area,
+.genre-area,
+.exclude-area {
+  border-color: #dddddd;
+  box-shadow: none;
+}
+
+.primary-panel {
+  border: 1px solid #dddddd;
+  border-radius: 24px;
+  background-color: #ffffff;
+  padding: 18px;
+  margin-bottom: 16px;
+}
+
+.primary-panel-header {
+  margin-bottom: 14px;
+}
+
+.primary-spoiler-control {
+  border: 1px solid #dddddd;
+  border-radius: 18px;
+  background-color: #fafafa;
+  padding: 14px;
+  margin-bottom: 16px;
+}
+
+.primary-spoiler-control .mode-caution {
+  margin: 0 0 10px;
+}
+
+.settings-hub {
+  border: 1px solid #dddddd;
+  box-shadow: none;
+}
+
+.settings-hub-content {
+  display: grid;
+  gap: 14px;
+}
+
+.preset-area {
+  border: 1px solid #eeeeee;
+  border-radius: 18px;
+  background-color: #ffffff;
+  padding: 14px;
+}
+
+.preset-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.preset-button {
+  border: 1px solid #cccccc;
+  border-radius: 18px;
+  background-color: #ffffff;
+  color: #111111;
+  padding: 10px 12px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  min-height: 44px;
+  text-align: center;
+}
+
+.preset-button:hover {
+  border-color: #111111;
+  background-color: #f3f3f3;
+  color: #111111;
+}
+
+.preset-button:active {
+  background-color: #e9e9e9;
+}
+
+.preset-clear-button {
+  color: #555555;
+}
+
+.main-action {
+  position: static;
+  border: 1px solid #dddddd;
+  border-radius: 24px;
+  background-color: #ffffff;
+  padding: 18px;
+}
+
+.gacha-button {
+  border: 2px solid #111111;
+  background-color: #ffffff;
+  color: #111111;
+  box-shadow: none;
+}
+
+.gacha-button:hover {
+  background-color: #f3f3f3;
+  color: #111111;
+}
+
+.gacha-button:active {
+  background-color: #e9e9e9;
+  color: #111111;
+  border-color: #111111;
+}
+
+.results-area {
+  border: 2px solid #111111;
+  border-radius: 24px;
+  background-color: #fafafa;
+  padding: 22px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06);
+}
+
+.usage-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.usage-step {
+  border: 1px solid #eeeeee;
+  border-radius: 16px;
+  background-color: #fafafa;
+  padding: 12px;
+}
+
+.usage-step strong,
+.usage-step span {
+  display: block;
+}
+
+.usage-step strong {
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+
+.usage-step span {
+  color: #555555;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+@media (max-width: 760px) {
+  .preset-buttons,
+  .usage-steps {
+    grid-template-columns: 1fr;
+  }
+
+  .mode-buttons,
+  .mode-area .mode-buttons {
+    grid-template-columns: 1fr;
+  }
+}

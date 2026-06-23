@@ -817,7 +817,7 @@ function createRecommendationReasonText(book, preferenceModel) {
 }
 
 function isUnsafeRecommendationReasonLabel(label) {
-  return ["叙述", "叙述ミステリ", "大どんでん返し", "どんでん返し", "読者騙し", "信用できない語り手", "真相反転"].includes(label);
+  return SPOILER_SENSITIVE_LABELS.includes(label);
 }
 
 function getBookLabels(book) {
@@ -924,6 +924,22 @@ function getAllFilterLabels() {
   });
 }
 
+function getAllInternalPickerLabels() {
+  const labels = [];
+
+  books.forEach(function (book) {
+    (book.internalTags || []).concat(getDerivedLabels(book)).forEach(function (label) {
+      if (label && label !== "ミステリ" && isHiddenPickerLabel(label) && !labels.includes(label)) {
+        labels.push(label);
+      }
+    });
+  });
+
+  return labels.sort(function (a, b) {
+    return a.localeCompare(b, "ja");
+  });
+}
+
 function renderFilterButtons() {
   filterButtonsArea.innerHTML = "";
 
@@ -1004,6 +1020,30 @@ function renderTagCategoryGroups(container, buttonClass, datasetName) {
     otherLabels.forEach(function (label) {
       buttonBox.appendChild(createTagButton(label, buttonClass, datasetName));
     });
+    group.appendChild(buttonBox);
+    container.appendChild(group);
+  }
+
+  const internalLabels = getAllInternalPickerLabels();
+
+  if (internalLabels.length > 0) {
+    const group = document.createElement("div");
+    group.classList.add("tag-category-group", "tag-category-internal", "internal-tag-details");
+
+    const heading = document.createElement("div");
+    heading.classList.add("tag-category-heading");
+    heading.innerHTML = `
+      <h3>内部タグ（ネタバレ注意・複数推奨）</h3>
+      <p>作品の細かい方向性を調整するタグです。1つだけ選ぶと見えすぎる場合があるため、2〜3個以上を組み合わせるのがおすすめです。</p>
+    `;
+    group.appendChild(heading);
+
+    const buttonBox = document.createElement("div");
+    buttonBox.classList.add("tag-category-buttons");
+    internalLabels.forEach(function (label) {
+      buttonBox.appendChild(createTagButton(label, buttonClass, datasetName));
+    });
+
     group.appendChild(buttonBox);
     container.appendChild(group);
   }
@@ -1234,8 +1274,26 @@ function calculateBookWeight(book, mode) {
   const rankBonus = getRankMultiplier(book.rank);
   const exposurePenalty = getExposurePenalty(book.id);
   const personalBonus = mode === "recommend" ? Math.max(1, Number(book.recommendationScore) || 1) / 8 : 1;
+  const selectedFilterMatchBonus = mode === "random" ? 1 : getSelectedFilterMatchMultiplier(book);
 
-  return Math.pow(Math.max(1, baseScore), 1.35) * rankBonus * exposurePenalty * personalBonus;
+  return Math.pow(Math.max(1, baseScore), 1.35) * rankBonus * exposurePenalty * personalBonus * selectedFilterMatchBonus;
+}
+
+function getSelectedFilterMatchMultiplier(book) {
+  if (selectedFilters.length <= 1) {
+    return 1;
+  }
+
+  const bookLabels = getBookLabels(book);
+  const matchCount = selectedFilters.filter(function (label) {
+    return bookLabels.includes(label);
+  }).length;
+
+  if (matchCount <= 1) {
+    return 1;
+  }
+
+  return Math.min(1.45, 1 + (matchCount - 1) * 0.12);
 }
 
 function getInternalSignalBonus(book, mode) {
@@ -1901,15 +1959,8 @@ function getApproxTotalScore(book) {
 }
 
 function toggleWantBook(bookId) {
-  if (readBookIds.includes(bookId)) {
-    readBookIds = readBookIds.filter(function (id) {
-      return id !== bookId;
-    });
-    delete bookRatings[String(bookId)];
-    saveIdList("mysteryGachaReadBookIds", readBookIds);
-    saveBookRatings("mysteryGachaBookRatings", bookRatings);
-  }
-
+  // 「読みたい」は読みたいリストだけを切り替える。
+  // 既読本を誤って読みたいに追加しても、既読状態や読後評価は消さない。
   if (wantBookIds.includes(bookId)) {
     wantBookIds = wantBookIds.filter(function (id) {
       return id !== bookId;
@@ -1918,6 +1969,7 @@ function toggleWantBook(bookId) {
     wantBookIds.push(bookId);
   }
 
+  wantBookIds = Array.from(new Set(wantBookIds));
   saveIdList("mysteryGachaWantBookIds", wantBookIds);
 }
 
@@ -2165,9 +2217,26 @@ function getBookById(bookId) {
   });
 }
 
+function getSafeStorageItem(storageKey) {
+  try {
+    return localStorage.getItem(storageKey);
+  } catch (error) {
+    return null;
+  }
+}
+
+function setSafeStorageItem(storageKey, value) {
+  try {
+    localStorage.setItem(storageKey, value);
+    return true;
+  } catch (error) {
+    return false;
+  }
+}
+
 function loadIdList(storageKey) {
   try {
-    const value = localStorage.getItem(storageKey);
+    const value = getSafeStorageItem(storageKey);
 
     if (!value) {
       return [];
@@ -2193,14 +2262,14 @@ function loadIdList(storageKey) {
 
 function saveIdList(storageKey, idList) {
   const uniqueIds = Array.from(new Set(idList));
-  localStorage.setItem(storageKey, JSON.stringify(uniqueIds));
+  setSafeStorageItem(storageKey, JSON.stringify(uniqueIds));
 }
 
 
 
 function loadBookRatings(storageKey) {
   try {
-    const value = localStorage.getItem(storageKey);
+    const value = getSafeStorageItem(storageKey);
 
     if (!value) {
       return {};
@@ -2213,7 +2282,7 @@ function loadBookRatings(storageKey) {
 }
 
 function saveBookRatings(storageKey, ratings) {
-  localStorage.setItem(storageKey, JSON.stringify(ratings || {}));
+  setSafeStorageItem(storageKey, JSON.stringify(ratings || {}));
 }
 
 function cleanImportedBookRatings(ratings, allowedReadIds) {
@@ -2466,7 +2535,7 @@ function cleanImportedIds(idList) {
 
 function loadShownStats(storageKey) {
   try {
-    const value = localStorage.getItem(storageKey);
+    const value = getSafeStorageItem(storageKey);
 
     if (!value) {
       return {};
@@ -2479,7 +2548,7 @@ function loadShownStats(storageKey) {
 }
 
 function saveShownStats(storageKey, stats) {
-  localStorage.setItem(storageKey, JSON.stringify(stats || {}));
+  setSafeStorageItem(storageKey, JSON.stringify(stats || {}));
 }
 
 function cleanImportedShownStats(stats) {

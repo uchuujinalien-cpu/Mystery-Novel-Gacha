@@ -1902,3 +1902,40 @@ h1 {
     grid-template-columns: 1fr;
   }
 }
+
+/* Mobile summary alignment fix: keep open/close badges stable even when the text wraps. */
+.collapsible-card > details > summary,
+.saved-list-box > details > summary {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  column-gap: 12px;
+  line-height: 1.6;
+}
+
+.collapsible-card > details > summary::after,
+.saved-list-box > details > summary::after {
+  float: none;
+  justify-self: end;
+  align-self: center;
+  white-space: nowrap;
+  margin-left: 0;
+}
+
+.rating-collapsible > summary::after {
+  float: none;
+  flex: 0 0 auto;
+  white-space: nowrap;
+  margin-left: 0;
+}
+
+.rating-collapsible > summary span {
+  min-width: 0;
+}
+
+@media (max-width: 760px) {
+  .collapsible-card > details > summary,
+  .saved-list-box > details > summary {
+    padding-right: 14px;
+  }
+}

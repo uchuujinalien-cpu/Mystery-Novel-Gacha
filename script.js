@@ -232,31 +232,26 @@ const REASON_LABEL_MAP = {
 
 const PRESET_CONFIGS = {
   safeStart: {
-    displayMode: "normal",
     gachaType: "all",
     filters: ["読みやすい", "入門向け", "人気作"],
     excludes: ["重厚", "上級者向け", "クセ強め", "後味悪い", "不穏"]
   },
   logicBattle: {
-    displayMode: "normal",
     gachaType: "logic",
     filters: ["知略・頭脳戦", "論理戦", "名探偵"],
     excludes: []
   },
   honkaku: {
-    displayMode: "normal",
     gachaType: "masterpiece",
     filters: ["本格", "本格ミステリ", "王道"],
     excludes: []
   },
   easyRead: {
-    displayMode: "normal",
     gachaType: "all",
     filters: ["読みやすい", "入門向け", "ライト"],
     excludes: ["重厚", "上級者向け", "読み応え"]
   },
   heavyMasterpiece: {
-    displayMode: "normal",
     gachaType: "masterpiece",
     filters: ["名作・必読", "重厚", "読み応え"],
     excludes: ["ライト"]
@@ -268,7 +263,6 @@ const PRESET_CONFIGS = {
     excludes: ["クセ強め", "後味悪い", "不穏"]
   },
   clear: {
-    displayMode: "normal",
     gachaType: "all",
     filters: [],
     excludes: []
@@ -278,7 +272,7 @@ const PRESET_CONFIGS = {
 
 let selectedFilters = [];
 let selectedExcludeFilters = [];
-let displayMode = "normal";
+let displayMode = "spoilerSafe";
 let gachaType = "all";
 let currentResultBooks = [];
 let readBookIds = loadIdList("mysteryGachaReadBookIds");
@@ -451,7 +445,10 @@ function applyPreset(presetName) {
     return;
   }
 
-  displayMode = preset.displayMode;
+  if (preset.displayMode) {
+    displayMode = preset.displayMode;
+  }
+
   gachaType = preset.gachaType;
   selectedFilters = getAvailablePresetLabels(genreButtons, "genre", preset.filters);
   selectedExcludeFilters = getAvailablePresetLabels(excludeTagButtons, "exclude", preset.excludes);

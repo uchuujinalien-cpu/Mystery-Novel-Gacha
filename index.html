@@ -32,7 +32,7 @@
         これは作品そのものの絶対的な優劣ではなく、このサイトのガチャでどの作品を出しやすくするかを調整するための基準です。
       </p>
       <p>
-        ネタバレが不安な場合は、ガチャを引く前に「ネタバレ回避モード」を選んでください。タイトル・作者・出版社だけを見て選べます。
+        初期状態では「ネタバレ回避モード」になっています。タイトル・作者・出版社だけを見て選び、説明文やタグまで見たいときだけ通常モードに切り替えてください。
       </p>
     </section>
 
@@ -43,7 +43,7 @@
           <div class="usage-steps">
             <div class="usage-step">
               <strong>1. 最初に表示モードを選ぶ</strong>
-              <span>通常モードでは説明文・タグ・一言理由まで表示します。ネタバレが不安な場合は、上の「まずは条件を軽く選ぶ」欄でネタバレ回避モードを選んでから引いてください。</span>
+              <span>初期状態ではネタバレ回避モードです。通常モードでは説明文・タグ・一言理由まで表示するので、詳しく見たいときだけ切り替えてください。</span>
             </div>
             <div class="usage-step">
               <strong>2. ガチャの種類と表示冊数を選ぶ</strong>
@@ -79,16 +79,16 @@
 
           <section class="mode-area spoiler-mode-area primary-control-section primary-spoiler-control">
             <p class="section-title">表示モードを選ぶ</p>
-            <p class="small-note mode-caution">ネタバレが不安な場合は、ガチャを引く前に「ネタバレ回避モード」を選んでください。</p>
+            <p class="small-note mode-caution">基本は「ネタバレ回避モード」で使えます。説明文・タグまで見たいときだけ通常モードに切り替えてください。</p>
             <div class="mode-buttons">
-              <label class="mode-option active">
-                <input type="radio" name="displayMode" value="normal" checked>
+              <label class="mode-option">
+                <input type="radio" name="displayMode" value="normal">
                 <span class="mode-title">通常モード</span>
                 <span class="mode-description">説明文・ジャンル・タグも表示</span>
               </label>
 
-              <label class="mode-option">
-                <input type="radio" name="displayMode" value="spoilerSafe">
+              <label class="mode-option active">
+                <input type="radio" name="displayMode" value="spoilerSafe" checked>
                 <span class="mode-title">ネタバレ回避モード</span>
                 <span class="mode-description">タイトル・作者・出版社のみ表示</span>
               </label>
@@ -172,7 +172,7 @@
               <button class="preset-button" data-preset="spoilerSafe">ネタバレ回避で探す</button>
               <button class="preset-button preset-clear-button" data-preset="clear">条件をリセット</button>
             </div>
-            <p class="small-note">プリセットはジャンル・タグ・除外条件をまとめて切り替える補助機能です。「ネタバレ回避で探す」は表示モードも安全寄りに変更します。ガチャ結果が表示済みの場合は、その条件で自動更新します。</p>
+            <p class="small-note">プリセットはジャンル・タグ・除外条件をまとめて切り替える補助機能です。現在の表示モードは基本そのまま維持し、「ネタバレ回避で探す」だけ表示モードも安全寄りに変更します。ガチャ結果が表示済みの場合は、その条件で自動更新します。</p>
           </section>
 
           <section class="genre-area collapsible-card nested-card">

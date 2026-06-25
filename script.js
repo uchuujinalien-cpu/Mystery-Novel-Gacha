@@ -27,7 +27,7 @@ const TAG_CATEGORY_DEFINITIONS = [
     id: "value",
     title: "評価・位置づけ",
     description: "ミステリ好き向けの優先度で選ぶ",
-    labels: ["名作・必読", "超人気作", "人気作", "近年人気", "最近人気上昇", "親しまれている", "チャッピーおすすめ", "古典", "海外古典"]
+    labels: ["名作・必読", "超人気作", "人気作", "近年人気", "最近人気上昇", "親しまれている", "AIおすすめ", "古典", "海外古典"]
   }
 ];
 
@@ -707,7 +707,7 @@ function calculateRecommendationScore(book, preferenceModel, hasProfile) {
       score += (profileScores[label] || 0) * (0.55 + confidence * 0.85);
     });
   } else {
-    ["チャッピーおすすめ", "人気作", "超人気作", "読みやすい", "入門向け", "親しまれている", "論理戦", "名探偵", "知略・頭脳戦", "盤面支配", "高計画性", "先読み", "天才型", "必読級"].forEach(function (label) {
+    ["AIおすすめ", "人気作", "超人気作", "読みやすい", "入門向け", "親しまれている", "論理戦", "名探偵", "知略・頭脳戦", "盤面支配", "高計画性", "先読み", "天才型", "必読級"].forEach(function (label) {
       if (labels.includes(label)) {
         score += 2;
       }
